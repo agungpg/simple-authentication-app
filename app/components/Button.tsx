@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { StyleSheet, TouchableOpacity, ViewStyle, StyleProp, TouchableOpacityProps, ActivityIndicator } from "react-native";
 import Typography, { TypographyVariant } from "./Typography";
 
@@ -62,4 +62,4 @@ const styles = StyleSheet.create({
 });
 
 export type { ButtonProps };
-export default Button;
+export default memo(Button);

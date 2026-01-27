@@ -1,4 +1,4 @@
-import { removeData, STORAGE_KEYS } from "@storage"
+import { removeData, STORAGE_KEYS } from "@storage/index"
 
 export const logout = async (): Promise<boolean> => {
   try {

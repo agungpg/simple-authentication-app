@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { StyleSheet, StyleProp, Text, TextProps, TextStyle } from "react-native";
 
 type TypographyVariant = "display" | "heading" | "title" | "label" | "body" | "caption";
@@ -72,4 +72,4 @@ const variantStyles = StyleSheet.create({
 });
 
 export type { TypographyProps, TypographyVariant };
-export default Typography;
+export default memo(Typography);

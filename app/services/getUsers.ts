@@ -1,4 +1,4 @@
-import { getData, STORAGE_KEYS } from "@storage";
+import { getData, STORAGE_KEYS } from "@storage/index";
 import type { User } from "@type/user";
 
 const parseUsers = (raw: string | null | undefined): User[] => {

@@ -1,4 +1,4 @@
-import { STORAGE_KEYS, storeData } from "@storage";
+import { STORAGE_KEYS, storeData } from "@storage/index";
 import { findUserByEmail, getUsers } from "./getUsers";
 import type { User } from "@type/user";
 import type { SignUpResult } from "@type/auth";

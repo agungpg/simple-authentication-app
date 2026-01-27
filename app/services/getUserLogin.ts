@@ -1,4 +1,4 @@
-import { getData, STORAGE_KEYS } from "@storage";
+import { getData, STORAGE_KEYS } from "@storage/index";
 import type { LoggedInUser } from "@type/auth";
 
 export const getUserLogin = async (): Promise<LoggedInUser | null> => {
