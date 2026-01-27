@@ -7,8 +7,8 @@ import { View, StyleSheet } from "react-native";
 import { AuthParamList, AuthRoutes } from "../../navigations/AuthNavigation";
 import Typography from "@components/Typography";
 import { AuthContext } from "app/provider/AuthProvider";
-import { useValidation } from "app/validations";
-import { LoginSchema } from "app/validations/auth";
+import { useValidation } from "@validations/index";
+import { LoginSchema } from "@validations/auth";
 
 const initialFormState = {
   email: "",
@@ -99,7 +99,7 @@ const LoginScreen = () => {
       <View style={styles.actionsSection}>
         <View>
           {errors.form ? (
-              <Typography variant="body" style={{ color: "#DC2626", textAlign: "center", paddingBottom: 8 }}>
+              <Typography variant="body" style={styles.formErrorMsg}>
                 {errors.form}
               </Typography>
             ) : null}
@@ -154,6 +154,11 @@ const styles = StyleSheet.create({
   linkButton: {
     height: "auto",
     paddingHorizontal: 0,
+  },
+  formErrorMsg: { 
+    color: "#DC2626", 
+    textAlign: "center", 
+    paddingBottom: 8 
   }
 })
 

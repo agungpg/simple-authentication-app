@@ -1,6 +1,5 @@
 import { getData, STORAGE_KEYS } from "@storage";
-
-type LoggedInUser = { name: string; email: string };
+import type { LoggedInUser } from "@type/auth";
 
 export const getUserLogin = async (): Promise<LoggedInUser | null> => {
   const curUser = await getData(STORAGE_KEYS.CURRENT_USER);

@@ -1,27 +1,18 @@
-import { User } from '@models/user';
-import { createContext, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
-import { signUp as userSignup } from "../services/signup";
-import { login as userLogin } from "../services/login";
-import { logout as userLogout } from "../services/logout";
-import { getUserLogin } from 'app/services/getUserLogin';
-type Profile = Omit<User, "password">
-type LoginParam = Omit<User, "name">
-type AuthContextType = {
-    isLoading: boolean;
-    isLogedIn: boolean;
-    profile: Profile | undefined;
-    login: (param: LoginParam) => Promise<{error: string}>;
-    logout: () => void;
-    signUp: (user: User) => Promise<{error: string}>;
-}
+import { User } from '@type/user';
+import { AuthContextType, LoginParam, Profile } from '@type/auth';
+import { createContext, ReactNode, useCallback, useEffect, useState } from 'react';
+import { signUp as userSignup } from "@services/signUp";
+import { login as userLogin } from "@services/login";
+import { logout as userLogout } from "@services/logout";
+import { getUserLogin } from '@services/getUserLogin';
 
 export const AuthContext = createContext<AuthContextType>({
     isLoading: false,
     isLogedIn: false,
     profile: undefined,
-    login: (param: LoginParam) => Promise.resolve({error: ""}),
+    login: (_: LoginParam) => Promise.resolve({error: ""}),
     logout: () => {},
-    signUp: (param: User) => Promise.resolve({error: ""})
+    signUp: (_: User) => Promise.resolve({error: ""})
 }); 
 
 function AuthProvider({
@@ -34,24 +25,25 @@ function AuthProvider({
   const [profile, setProfile] = useState<Profile | undefined>(undefined)
 
   useEffect(() => {
-    const checkLogin = () => {
-      setIsLoading(true)
-      getUserLogin().then((user) => {
-        if(user) {
-          setIsLogedin(true)
-          setProfile(user)
+    const checkLogin = async () => {
+      setIsLoading(true);
+      try {
+        const user = await getUserLogin();
+        if (user) {
+          setIsLogedin(true);
+          setProfile(user);
         }
-      }).finally(() => {
-        setIsLoading(false)
-      })
-    }
-    checkLogin()
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkLogin();
   }, [])
 
   const login = useCallback(async (user: LoginParam) => {
-    console.log("login is call")
     const {data, error} = await userLogin(user);
-    console.log({data, error})
+
     if(data && !error) {
       setIsLogedin(true)
       setProfile({
@@ -66,7 +58,6 @@ function AuthProvider({
   }, [])
 
   const logout = useCallback(async () => {
-    console.log("logout")
     const res = await userLogout()
     if(res) {
       setIsLogedin(false)
@@ -79,25 +70,17 @@ function AuthProvider({
     return res; 
   }, [])
 
-  const value: AuthContextType = useMemo(() => ({
-    isLoading,
-    isLogedIn,
-    profile,
-    login,
-    logout,
-    signUp
-  }), [isLoading, isLogedIn, profile, login, logout, signUp])
 
   return (
     <AuthContext.Provider 
     value={{
-    isLoading,
-    isLogedIn,
-    profile,
-    login,
-    logout,
-    signUp
-  }}>
+      isLoading,
+      isLogedIn,
+      profile,
+      login,
+      logout,
+      signUp
+    }}>
         {children}
     </AuthContext.Provider>
   );

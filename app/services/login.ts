@@ -1,9 +1,6 @@
-import { User } from "@models/user";
+import { LoginPayload, LoginResult } from "@type/auth";
 import { findUserByEmail } from "./getUsers";
-import { STORAGE_KEYS, storeData } from "@storage";
-
-type LoginPayload = Omit<User, "name">;
-type LoginResult = { data: User | null; error: string };
+import { STORAGE_KEYS, storeData } from "@storage/index";
 
 export const login = async (payload: LoginPayload): Promise<LoginResult> => {
   const user = await findUserByEmail(payload.email);

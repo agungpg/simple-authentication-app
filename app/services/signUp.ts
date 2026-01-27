@@ -1,8 +1,7 @@
 import { STORAGE_KEYS, storeData } from "@storage";
 import { findUserByEmail, getUsers } from "./getUsers";
-import type { User } from "@models/user";
-
-type SignUpResult = { error: string };
+import type { User } from "@type/user";
+import type { SignUpResult } from "@type/auth";
 
 export const signUp = async (payload: User): Promise<SignUpResult> => {
   try {

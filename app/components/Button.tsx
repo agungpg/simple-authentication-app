@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, ViewStyle, StyleProp, TouchableOpacityProps, TextStyle } from "react-native";
+import { StyleSheet, TouchableOpacity, ViewStyle, StyleProp, TouchableOpacityProps, ActivityIndicator } from "react-native";
 import Typography, { TypographyVariant } from "./Typography";
 
 interface ButtonProps extends TouchableOpacityProps {
@@ -17,7 +17,7 @@ const Button = ({
   label,
   isLoading = false,
   disabled = false,
-  backgroundColor = "#DA478D",
+  backgroundColor = "#C73C80",
   textColor = "#fff",
   textVariant = "label",
   outline = false,
@@ -26,6 +26,7 @@ const Button = ({
 }: ButtonProps) => {
   const buttonColor = disabled ? "#C4C4C4" : backgroundColor;
   const borderStyle = outline ? { borderWidth: 1.5, borderColor: textColor } : null;
+  const bgColorStyle = { backgroundColor: outline ? "transparent" : buttonColor };
 
   return (
     <TouchableOpacity
@@ -33,15 +34,18 @@ const Button = ({
       disabled={disabled}
       style={[
         styles.button,
-        { backgroundColor: outline ? "transparent" : buttonColor },
+        bgColorStyle,
         borderStyle,
         style,
       ]}
       {...props}
     >
+    {isLoading ? 
+      <ActivityIndicator size="large" color={textColor} /> : 
       <Typography variant={textVariant} color={textColor} >
-        {isLoading ? "Loading..." : label}
+        {label}
       </Typography>
+    }
     </TouchableOpacity>
   );
 };

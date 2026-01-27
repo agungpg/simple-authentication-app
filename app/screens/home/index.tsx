@@ -1,6 +1,5 @@
-import MaterialIcons from "@react-native-vector-icons/material-icons";
 import React, { useContext } from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native"
+import { View, StyleSheet } from "react-native"
 import InfoRow from "../../components/InfoRow";
 import Typography from "../../components/Typography";
 import Button from "@components/Button";

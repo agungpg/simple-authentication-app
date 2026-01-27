@@ -1,5 +1,5 @@
 import { getData, STORAGE_KEYS } from "@storage";
-import type { User } from "@models/user";
+import type { User } from "@type/user";
 
 const parseUsers = (raw: string | null | undefined): User[] => {
   if (!raw) return [];

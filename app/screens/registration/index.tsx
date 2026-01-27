@@ -7,9 +7,8 @@ import Button from "@components/Button";
 import Typography from "@components/Typography";
 import { AuthParamList, AuthRoutes } from "../../navigations/AuthNavigation";
 import { AuthContext } from "app/provider/AuthProvider";
-import { useValidation } from "app/validations";
-import { SignUpSchema } from "app/validations/auth";
-
+import { useValidation } from "@validations/index";
+import { SignUpSchema } from "@validations/auth";
 const formInitialState = {
   name: "",
   email: "",
@@ -19,8 +18,14 @@ const formInitialState = {
 
 const errorInitialState = {
   ...formInitialState,
-  form: "",
 };
+
+type FormAlertType = "error" | "success" | null
+
+type FormAlert = {
+  type: FormAlertType; 
+  message: string | null;
+}
 
 const RegistrationScreen = () => {
     const { navigate } = useNavigation<NativeStackNavigationProp<AuthParamList>>();
@@ -30,6 +35,10 @@ const RegistrationScreen = () => {
     const [form, setForm] = useState(formInitialState);
     const [errors, setErrors] = useState(errorInitialState);
     const [isLoading, setIsLoading] = useState(false);
+    const [FormAlert, setFormAlert] = useState<FormAlert>({
+      type: null,
+      message: null
+    })
 
     const handleNameChange = useCallback(
       (value: string) => setForm(prev => ({ ...prev, name: value })),
@@ -53,6 +62,7 @@ const RegistrationScreen = () => {
 
     const validateFormData = useCallback(async () => {
       setErrors(errorInitialState);
+      setFormAlert({ type: null, message: null });
       const res = await validate(SignUpSchema, form);
       if (res) {
         setErrors(prev => ({
@@ -78,18 +88,27 @@ const RegistrationScreen = () => {
         if (error) {
           throw new Error(error);
         }
-
+        setFormAlert({
+          type: "success",
+          message: "Signup successful. You can login now."
+        })
+        setForm(formInitialState)
       } catch (error) {
         const errMsg = error?.toString()?.replaceAll("Error: ", "") 
                         ?? "Opps something went wrong";
-
-        setErrors(prev => ({ ...prev, form: errMsg  }));
+        setFormAlert({
+          type: "error",
+          message: errMsg
+        })
       } finally {
         setIsLoading(false);
       }
     }, [form, signUp, validateFormData]);
 
-    const goToLogin = useCallback(() => navigate(AuthRoutes.Login), [navigate]);
+    const onLoginPress = useCallback(() => navigate(AuthRoutes.Login), [navigate]);
+
+    const alertMsgColor = { color: FormAlert.type === "success" ? "#22C55E" : "#DC2626" }
+
     
     return <View style={styles.screenContainer}>
       <View style={styles.headerSection}>
@@ -142,9 +161,9 @@ const RegistrationScreen = () => {
       </View>
       <View style={styles.actionsSection}>
         <View>
-          {errors.form ? (
-              <Typography variant="body" style={{ color: "#DC2626", textAlign: "center", paddingBottom: 8 }}>
-                {errors.form}
+          {FormAlert.message ? (
+              <Typography variant="body" style={[styles.formAlertMsg, alertMsgColor]}>
+                {FormAlert.message}
               </Typography>
             ) : null}
           <Button isLoading={isValidating || isLoading} label="Sign Up" onPress={onSignupPress} />
@@ -152,8 +171,8 @@ const RegistrationScreen = () => {
         <View style={styles.linkRow}>
           <Typography variant="caption">You already have an account?</Typography>
           <Button 
-            onPress={goToLogin}
-            label="Sign In"  
+            onPress={onLoginPress}
+            label="Login"  
             backgroundColor="transparent" 
             style={styles.linkButton}
             textVariant="caption"
@@ -193,6 +212,10 @@ const styles = StyleSheet.create({
   linkButton: {
     height: "auto",
     paddingHorizontal: 0,
+  },
+  formAlertMsg: {
+    textAlign: "center", 
+    paddingBottom: 8
   }
 })
 
