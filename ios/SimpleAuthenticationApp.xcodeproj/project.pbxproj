@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0C80B921A6F3F58F76C31292 /* libPods-SimpleAuthenticationApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-SimpleAuthenticationApp.a */; };
+		10B250E67E8E401591E0085B /* PoppinsMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BED39F56428547B586230C38 /* PoppinsMedium.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		6122787EBB1444349A7FC4B7 /* PoppinsBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 973346B909DD4A92899CB5E5 /* PoppinsBold.ttf */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9757972547C04D5691BAC2B5 /* PoppinsSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 116627F453FC41C0B911ADCF /* PoppinsSemiBold.ttf */; };
+		B92A8555D7F247F1A8E7B1CB /* PoppinsRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95728F254DBD4EF4BF8EBD25 /* PoppinsRegular.ttf */; };
 		F283B83B1483E25EE907AB0C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		116627F453FC41C0B911ADCF /* PoppinsSemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = PoppinsSemiBold.ttf; path = ../app/assets/fonts/PoppinsSemiBold.ttf; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* SimpleAuthenticationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleAuthenticationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SimpleAuthenticationApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SimpleAuthenticationApp/Info.plist; sourceTree = "<group>"; };
@@ -24,6 +29,9 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-SimpleAuthenticationApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SimpleAuthenticationApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SimpleAuthenticationApp/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SimpleAuthenticationApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		95728F254DBD4EF4BF8EBD25 /* PoppinsRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = PoppinsRegular.ttf; path = ../app/assets/fonts/PoppinsRegular.ttf; sourceTree = "<group>"; };
+		973346B909DD4A92899CB5E5 /* PoppinsBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = PoppinsBold.ttf; path = ../app/assets/fonts/PoppinsBold.ttf; sourceTree = "<group>"; };
+		BED39F56428547B586230C38 /* PoppinsMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = PoppinsMedium.ttf; path = ../app/assets/fonts/PoppinsMedium.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -60,6 +68,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4C2AB2ED57D64B9DB94F1544 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BED39F56428547B586230C38 /* PoppinsMedium.ttf */,
+				973346B909DD4A92899CB5E5 /* PoppinsBold.ttf */,
+				95728F254DBD4EF4BF8EBD25 /* PoppinsRegular.ttf */,
+				116627F453FC41C0B911ADCF /* PoppinsSemiBold.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +95,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				4C2AB2ED57D64B9DB94F1544 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -161,6 +182,10 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				F283B83B1483E25EE907AB0C /* PrivacyInfo.xcprivacy in Resources */,
+				10B250E67E8E401591E0085B /* PoppinsMedium.ttf in Resources */,
+				6122787EBB1444349A7FC4B7 /* PoppinsBold.ttf in Resources */,
+				B92A8555D7F247F1A8E7B1CB /* PoppinsRegular.ttf in Resources */,
+				9757972547C04D5691BAC2B5 /* PoppinsSemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
