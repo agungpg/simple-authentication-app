@@ -10,8 +10,11 @@ const path = require('path');
 const config = {
   resolver: {
     alias: {
+      // '@': path.resolve(__dirname, 'app'),
       '@components': path.resolve(__dirname, 'app/components'),
       '@screens': path.resolve(__dirname, 'app/screens'),
+      '@types': path.resolve(__dirname, 'app/types'),
+      '@storage': path.resolve(__dirname, 'app/storage'),
     },
   },
 };

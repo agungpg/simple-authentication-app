@@ -4,6 +4,7 @@ import Typography, { TypographyVariant } from "./Typography";
 
 interface ButtonProps extends TouchableOpacityProps {
   label: string;
+  isLoading?: boolean;
   disabled?: boolean;
   backgroundColor?: string;
   textColor?: string;
@@ -14,6 +15,7 @@ interface ButtonProps extends TouchableOpacityProps {
 
 const Button = ({
   label,
+  isLoading = false,
   disabled = false,
   backgroundColor = "#DA478D",
   textColor = "#fff",
@@ -38,7 +40,7 @@ const Button = ({
       {...props}
     >
       <Typography variant={textVariant} color={textColor} >
-        {label}
+        {isLoading ? "Loading..." : label}
       </Typography>
     </TouchableOpacity>
   );

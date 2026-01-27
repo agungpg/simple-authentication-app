@@ -1,3 +1,4 @@
+import AuthProvider from 'app/provider/AuthProvider';
 import AppNavigation from './app/navigations/AppNavigation';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
 import {
@@ -22,7 +23,9 @@ function AppContent() {
 
   return (
     <View style={[styles.container, {marginTop: statusBarHeight}]}>
+      <AuthProvider>
         <AppNavigation />
+      </AuthProvider>
     </View>
   );
 }

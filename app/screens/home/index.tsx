@@ -1,11 +1,13 @@
 import MaterialIcons from "@react-native-vector-icons/material-icons";
-import React from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native"
 import InfoRow from "../../components/InfoRow";
 import Typography from "../../components/Typography";
 import Button from "@components/Button";
+import { AuthContext } from "app/provider/AuthProvider";
 
 const HomeScreen = () => {
+  const {profile, logout} = useContext(AuthContext)
     
     return <View style={styles.screenContainer}>
       <View style={styles.profileHeader}>
@@ -13,18 +15,18 @@ const HomeScreen = () => {
       <View style={styles.detailsSection}>
         <InfoRow
           label={"Name"}
-          value={"Agung Perdana Gumelar"}
+          value={profile?.name ?? ""}
           icon={{ name: "person" }}
         />
         <InfoRow
           label={"Email"}
-          value={"agungperdana@gmail.com"}
+          value={profile?.email ?? ""}
           icon={{ name: "email" }}
         />
       </View>
       
       </View>
-      <Button textColor="#DC2626" outline label="Logout"/>
+      <Button onPress={logout} textColor="#DC2626" outline label="Logout"/>
     </View>
 }
 
